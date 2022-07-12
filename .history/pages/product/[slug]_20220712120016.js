@@ -7,9 +7,12 @@ import {useStateContext} from '../../context/StateContext'
 
 
 const ProductDetails = ({product,products}) => {
-    const { image, name, details, price } = product;
-    const [index, setIndex] = useState(0);
-    const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+
+    const {image,name,details,price}=product;
+
+    const [index, setIndex] = useState(0)
+
+    const {decQty,incQty,qty,onAdd,setShowCart}=useStateContext();
 
     const handleBuyNow=()=>{
         onAdd(product,qty);
@@ -23,7 +26,7 @@ const ProductDetails = ({product,products}) => {
         <div className='product-detail-container' >
             <div>
                 <div className='image-container' >
-                    <img src={urlFor(image && image[index])} className='product-detail-image' />
+                    <img src={urlFor(image&&image[index])} className='product-detail-image' />
                 </div>
                 <div className='small-images-container' >
                     {image?.map((item,i)=>(
@@ -116,7 +119,7 @@ export const getStaticPaths = async () => {
     const product = await client.fetch(query);
     const products = await client.fetch(productsQuery);
   
-  
+    console.log(product);
   
     return {
       props: { products, product }

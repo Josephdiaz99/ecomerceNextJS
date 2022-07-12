@@ -24,8 +24,7 @@ const Cart = () => {
       },
       body:JSON.stringify(cartItems),
     })
-
-    if(response.statusCode===500) return;
+    if(response.statusCode===500)return
 
     const data=await response.json();
 
@@ -77,11 +76,11 @@ const Cart = () => {
                 <div className="flex bottom">
                   <div>
                   <p className="quantity-desc">
-                    <span className="minus" onClick={() => toggleCartItemQuantity(item._id, 'dec') }>
+                    <span className="minus" onClick={() => toggleCartItemQuanitity(item._id, 'dec') }>
                     <AiOutlineMinus />
                     </span>
                     <span className="num" onClick="">{item.quantity}</span>
-                    <span className="plus" onClick={() => toggleCartItemQuantity(item._id, 'inc') }><AiOutlinePlus /></span>
+                    <span className="plus" onClick={() => toggleCartItemQuanitity(item._id, 'inc') }><AiOutlinePlus /></span>
                   </p>
                   </div>
                   <button
@@ -106,7 +105,7 @@ const Cart = () => {
               <button
                 type='button'
                 className='btn'
-                onClick={handleCheckout}
+                onClick=''
               >
                 Paga con Stripe
               </button>

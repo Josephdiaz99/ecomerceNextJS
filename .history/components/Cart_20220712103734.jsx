@@ -6,34 +6,12 @@ import {TiDeleteOutline} from 'react-icons/ti'
 import toast from 'react-hot-toast'
 import { useStateContext } from '../context/StateContext'
 import { urlFor } from '../lib/client'
-import getStripe from '../lib/getStripe'
+import handler from '../pages/api/stripe'
 
 const Cart = () => {
 
   const cartRef=useRef();
   const {totalPrice,totalQuantities,cartItems,setShowCart,toggleCartItemQuantity,onRemove}=useStateContext()
-
-  const handleCheckout= async ()=>{
-
-    const stripe=await getStripe();
-
-    const response= await fetch('/api/stripe',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-      },
-      body:JSON.stringify(cartItems),
-    })
-
-    if(response.statusCode===500) return;
-
-    const data=await response.json();
-
-    toast.loading('Redireccionando...')
-
-    stripe.redirectToCheckout({sessionId:data.id})
-  }
-
 
   return (
     <div className='cart-wrapper' ref={cartRef} >
@@ -65,31 +43,29 @@ const Cart = () => {
           </div>
 
         ) }
-          <div className="product-container">
-          {cartItems.length >= 1 && cartItems.map((item) => (
-            <div className="product" key={item._id}>
-              <img src={urlFor(item?.image[0])} className="cart-product-image" />
-              <div className="item-desc">
-                <div className="flex top">
-                  <h5>{item.name}</h5>
-                  <h4>${item.price}</h4>
+        <div className='product-container' >
+          {cartItems.length>=1 && cartItems.map((item)=>(
+            <div className='product' key={item._id}>
+              <img src={urlFor(item?.image[0])} className='cart-product-image' />
+              <div className='item-desc'>
+                <div className='flex top' >
+                  <h5>{item.name} </h5>
+                  <h4>${item.price} </h4>
                 </div>
-                <div className="flex bottom">
-                  <div>
-                  <p className="quantity-desc">
-                    <span className="minus" onClick={() => toggleCartItemQuantity(item._id, 'dec') }>
-                    <AiOutlineMinus />
-                    </span>
-                    <span className="num" onClick="">{item.quantity}</span>
-                    <span className="plus" onClick={() => toggleCartItemQuantity(item._id, 'inc') }><AiOutlinePlus /></span>
-                  </p>
+                <div className='flex-bottom' >
+                  <div >
+                    <p className='quantity-desc' >
+                        <span className='minus' onClick={()=>toggleCartItemQuantity(item._id,'dec')} ><AiOutlineMinus/></span>
+                        <span className='num' onClick='' >{item.quantity} </span>
+                        <span className='plus' onClick={()=>toggleCartItemQuantity(item._id,'inc')} ><AiOutlinePlus/></span>
+                    </p>
                   </div>
                   <button
-                    type="button"
-                    className="remove-item"
-                    onClick={() => onRemove(item)}
+                  type='button'
+                  className='remove-item'
+                  onClick={()=>onRemove(item)}
                   >
-                    <TiDeleteOutline />
+                    <TiDeleteOutline/>
                   </button>
                 </div>
               </div>
