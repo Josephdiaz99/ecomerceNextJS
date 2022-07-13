@@ -129,7 +129,7 @@ width: 100%;
 }
 
 .hero-banner-container{
-  padding: 100px 70px;
+  padding: 70px 10px;
   background-color: #dcdcdc;
   border-radius: 15px;
   position: relative;
@@ -620,7 +620,6 @@ margin-top: 160px;
 
 @media screen and (max-width:800px) {
   .hero-banner-container{
-    padding: 70px 10px;
     height: 560px;
   }
   .hero-banner-image{
