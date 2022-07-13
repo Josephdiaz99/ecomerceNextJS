@@ -73,7 +73,7 @@ const ProductDetails = ({product,products}) => {
                 </div>
             </div>
         </div>
-        <div className='maylike-products-wrapper' >
+        <div className='maylike-product-wrapper' >
               <h2>Tambien te gustaria</h2>      
               <div className='marquee'>
                 <div className='maylike-products-container track ' >
