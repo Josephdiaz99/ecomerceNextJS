@@ -32,7 +32,7 @@ const Success = () => {
             <p className='description'>
                 Si tienes alguna pregunta, escribenos: 
                 <a className='email' href="mailto:order@example.com">
-             josephmardiaz@gmail.com
+             order@example.com
             </a>
             </p>
             <Link href={'/'} >

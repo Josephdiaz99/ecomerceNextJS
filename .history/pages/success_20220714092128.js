@@ -31,8 +31,8 @@ const Success = () => {
             <p className='email-msg'>Revisa tu correo electronico</p>
             <p className='description'>
                 Si tienes alguna pregunta, escribenos: 
-                <a className='email' href="mailto:order@example.com">
-             josephmardiaz@gmail.com
+                <a href="mailto:order@example.com">
+             order@example.com
             </a>
             </p>
             <Link href={'/'} >
