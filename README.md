@@ -7,7 +7,7 @@ I used sanity for schemas of products
 # Nextjs
 For page performance
 
-#Node
+# Nodejs
 
 For API's call
 
